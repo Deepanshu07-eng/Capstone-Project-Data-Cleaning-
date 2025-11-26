@@ -46,4 +46,8 @@ print("\nNegative salaries replaced. Any negative values now:", (df['Monthly Sal
 df['Years of Experience'] = np.where(df['Years of Experience'] < 0 , df['Years of Experience'].median(), df['Years of Experience'])
 print("\nNegative experience values replaced. Any negative values now:", (df['Years of Experience'] < 0).sum())   # there is no negative values in this data set
 
+#remove rows whee salary is too high or too low
+df = df[(df['Monthly Salary (INR)'] >= 10000) & (df['Monthly Salary (INR)'] <= 100000)]
+print("\nDataset shape after removing outlier salaries:", df.shape)
 
+# saving cleaned data to a new CSV file
